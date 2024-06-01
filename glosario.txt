@@ -1,0 +1,5 @@
+Este documento sirve para anotar comandos nueos y poder recordar de manera mas facil que es lo que hace
+
+.fetchall() = es una función que usas después de ejecutar una consulta en una base de datos con SQLite en Python,
+             Esta función te da todos los resultados de la consulta de una sola vez.
+
