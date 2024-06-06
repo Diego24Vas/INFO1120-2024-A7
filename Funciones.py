@@ -1,6 +1,6 @@
 # Crear aqui las funciones para mas adelnte
 import sqlite3
-from docx import Document
+#from docx import Document
 
 
 # Inicia la base de datos
