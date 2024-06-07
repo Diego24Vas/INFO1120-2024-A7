@@ -4,9 +4,16 @@ import docx
 import Funciones as fn
 from word_gen import example_contract
 
-dato = (input("Ingresa el rut del usuario: "))
 
-doc =  docx.Document()
+Nums = int(input("Ingresa el rut del usuario (Sin digito Verificador): "))
+strNum = str(Nums)
+Dat = input("Ingresa el digito Verificador: ")
+UDat = Dat.upper #Error de Upper 
+print(UDat)
+SumDat = strNum + "-" + Dat
+print(SumDat)
+
+
 start = fn.Conectar_P("db_personas.db")
 
 def singular_data_to_contract(df: pd.DataFrame, index_row:int):
@@ -35,7 +42,7 @@ def contrato_empleador(db_personas, employee_id):
     
 if __name__ == "__main__":
     db = "db_personas.db"
-    employee_id = dato 
+    employee_id = SumDat 
     contrato_empleador(db, employee_id)
 
 
