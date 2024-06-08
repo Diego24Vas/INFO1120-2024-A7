@@ -52,8 +52,4 @@ if __name__ == "__main__":
     employee_id = SumDat 
     contrato_empleador(start, employee_id)
 
-  git config --global user.email "dvasquez2024@alu.uct.cl"
-  git config --global user.name "Diego24Vas"
-
-
-
+print("")
