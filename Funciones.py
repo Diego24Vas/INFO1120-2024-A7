@@ -2,7 +2,6 @@
 import sqlite3
 import pandas as pd
 import docx
-import Funciones as fn
 from word_gen import example_contract
 
 # Inicia la base de datos

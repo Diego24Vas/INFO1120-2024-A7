@@ -35,17 +35,6 @@ def singular_data_to_contract(df, employee_id):
         birth_date = sub_df['fecha_de_nacimiento']
         profession = sub_df['profesion']
         salary = sub_df['Sueldo']
-        print(f"Empleado encontrado: {employee_id}, en la fila: {index_row}")
-        print("Datos del empleado:")
-        print(f"Fecha: {sub_df['fecha_ingreso']}")
-        print(f"Rol: {sub_df['Rol']}")
-        print(f"Residencia: {sub_df['residencia']}")
-        print(f"RUT: {sub_df['rut']}")
-        print(f"Nombre Completo: {sub_df['nombre_completo']}")
-        print(f"Nacionalidad: {sub_df['nacionalidad']}")
-        print(f"Fecha de Nacimiento: {sub_df['fecha_de_nacimiento']}")
-        print(f"Profesión: {sub_df['profesion']}")
-        print(f"Sueldo: {sub_df['Sueldo']}")    
         example_contract(date, rol, address, rut, full_name, nationality, birth_date, profession, str(salary))
     except IndexError:
         print(f"Empleado con rut {employee_id} no encontrado.")
