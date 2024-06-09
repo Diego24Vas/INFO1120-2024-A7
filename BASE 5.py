@@ -59,13 +59,12 @@ def range_usu(ini_rut, fin_rut):
         print(f"Error al conectar a la base de datos o al procesar datos: {e}")
 
 # Consulta al usuario
-if __name__ == "__main__":
-    while True:
-        try:
-            ini_rut = int(input("Ingresa el RUT inicial del rango (sin dígito verificador): "))
-            fin_rut = int(input("Ingresa el RUT final del rango (sin dígito verificador): "))
-            break
-        except ValueError:
-            print("Error: Ingresa un número válido para el RUT.")
+while True:
+    try:
+        ini_rut = int(input("Ingresa el RUT inicial del rango (sin dígito verificador): "))
+        fin_rut = int(input("Ingresa el RUT final del rango (sin dígito verificador): "))
+        break
+    except ValueError:
+        print("Error: Ingresa un número válido para el RUT.")
     
-    range_usu(ini_rut, fin_rut)
+range_usu(ini_rut, fin_rut)
