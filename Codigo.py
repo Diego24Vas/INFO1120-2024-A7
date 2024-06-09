@@ -77,3 +77,4 @@ singular_data_to_contract(start, employee_id)
 
 #Consulta 5
 print("consulta 5")
+
