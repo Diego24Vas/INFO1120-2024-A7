@@ -62,8 +62,16 @@ def range_usu(ini_rut, fin_rut):
 if __name__ == "__main__":
     while True:
         try:
-            ini_rut = int(input("Ingresa el RUT inicial del rango (sin dígito verificador): "))
-            fin_rut = int(input("Ingresa el RUT final del rango (sin dígito verificador): "))
+            Nums = int(input("Ingresa el rut inicial del rango (Sin digito Verificador): "))
+            strNum = str(Nums)
+            Dat = input("Ingresa el digito Verificador: ")
+            UDat = Dat.upper()
+            ini_rut = strNum + "-" + UDat
+            Nums2 = int(input("Ingresa el rut final del rango (Sin digito Verificador): "))
+            strNum2 = str(Nums2)
+            Dat2 = input("Ingresa el digito Verificador: ")
+            UDat2 = Dat2.upper()
+            fin_rut = strNum2 + "-" + UDat2
             break
         except ValueError:
             print("Error: Ingresa un número válido para el RUT.")
