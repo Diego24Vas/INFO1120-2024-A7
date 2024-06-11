@@ -6,66 +6,49 @@ from word_gen import example_contract
 
 
 
-def singular_data_to_contract(sub_df):
-    try:
-        index_row = sub_df.name
-        print("Ya se creo el archivo")
-        date = sub_df['fecha_ingreso']
-        rol = sub_df['Rol']
-        address = sub_df['residencia']
-        rut = sub_df['rut']
-        full_name = sub_df['nombre_completo']
-        nationality = sub_df['nacionalidad']
-        birth_date = sub_df['fecha_de_nacimiento']
-        profession = sub_df['profesion']
-        salary = sub_df['Sueldo']
-        #Datos egresados, solo como comprobacion
-        print(f"Empleado encontrado: {rut}, en la fila: {index_row}")
-        print("Datos del empleado:")
-        print(f"Fecha: {sub_df['fecha_ingreso']}")
-        print(f"Rol: {sub_df['Rol']}")
-        print(f"Residencia: {sub_df['residencia']}")
-        print(f"RUT: {sub_df['rut']}")
-        print(f"Nombre Completo: {sub_df['nombre_completo']}")
-        print(f"Nacionalidad: {sub_df['nacionalidad']}")
-        print(f"Fecha de Nacimiento: {sub_df['fecha_de_nacimiento']}")
-        print(f"Profesión: {sub_df['profesion']}")
-        print(f"Sueldo: {sub_df['Sueldo']}")    
-        example_contract(date, rol, address, rut, full_name, nationality, birth_date, profession, str(salary))
-    except IndexError:
-        print(f"Empleado con rut {rut} no encontrado.")
-        return    
-    
+db = "db_personas.db"
+start = fn.Conectar_db(db)
+personas = fn.Conectar_P(db)
 
-
-# Funcion que llama los datos
-def range_usu(ini_rut, fin_rut):
-    try: 
-        conn = fn.Conectar_db("db_personas.db")
-        cons = f""" SELECT * FROM personas 
-                    NATURAL JOIN Salarios 
-                    WHERE rut BETWEEN {ini_rut} AND {fin_rut}"""
-        df = pd.read_sql_query(cons, conn)
-
-        # Comprueba si df esta vacio, si no genera los contratos
-        if df.empty:   
-            print("No se encontraron empleados en el rango especificado.")
-        else:
-            for index, row in df.iterrows():
-                singular_data_to_contract(row)
-        return df
-        
-    except Exception as e:
-        print(f"Error al conectar a la base de datos o al procesar datos: {e}")
+# Consulta cantidad de filas
+con_cant = start.execute("SELECT COUNT(*) as cantidad FROM personas")
+con_cant = con_cant.fetchone()
+con_cant = con_cant[0]
 
 # Consulta al usuario
-if __name__ == "__main__":
-    while True:
-        try:
-            ini_rut = int(input("Ingresa el RUT inicial del rango (sin dígito verificador): "))
-            fin_rut = int(input("Ingresa el RUT final del rango (sin dígito verificador): "))
-            break
-        except ValueError:
-            print("Error: Ingresa un número válido para el RUT.")
-    
-    range_usu(ini_rut, fin_rut)
+while True:
+    try:
+        inicio = int(input("Ingrese el primer numero de fila: "))
+        final = int(input("Ingrese el ultimo numero de fila: "))
+        
+        if inicio > final:  
+            print("El primer número debe ser menor o igual al último.")
+            continue
+        elif inicio > con_cant:
+            print("El primer rango esta fuera de limite")
+            continue
+        elif final > con_cant:
+            print("El segundo rango esta fuera de limite")
+            continue
+        break
+    except (ValueError, IndexError, TypeError):
+        print("Caracter ingresado no valido")
+
+
+def singular_data_to_contract(registro):
+        date = registro['fecha_ingreso']
+        rol = registro['Rol']
+        address = registro['residencia']
+        rut = registro['rut']
+        full_name = registro['nombre_completo']
+        nationality = registro['nacionalidad']
+        birth_date = registro['fecha_de_nacimiento']
+        profession = registro['profesion']
+        salary = registro['Sueldo']
+        #Datos egresados, solo como comprobacio  
+        example_contract(date, rol, address, rut, full_name, nationality, birth_date, profession, str(salary))
+
+
+for i in range(inicio, final):
+    registro_actual = personas.iloc[i]
+    singular_data_to_contract(registro_actual)
