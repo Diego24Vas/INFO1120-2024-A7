@@ -39,7 +39,7 @@ def example_contract(date:str, rol:str, address:str, rut:str, full_name:str, nat
     p1.add_run('PRIMERO        :').bold = True
     p1.add_run('En el marco del acuerdo de servicios profesionales fechado el 11 de noviembre de 2020, establecido entre la Agencia Nacional de Estándares Educativos y la Corporación de Innovación y Desarrollo Tecnológico , y ratificado según la Resolución Exenta N°603 del 23 de noviembre de 2020, la Corporación encarga los servicios profesionales del Prestador de Servicios, para que ejecute la siguiente tarea en el proyecto "Evaluación de competencias específicas y metodologías de aprendizaje artificial 2020, ID 67703-20-JJ90."')
     p1.add_run('\n SEGUNDO        :').bold = True
-    p1.add_run('El rol a desempeñar es de '+rol+'.')
+    p1.add_run('El rol a desempeñar es de {rol}.')
     p1.add_run('\n TERCERO        :').bold = True
     p1.add_run('El plazo para la realización de la prestación de servicios encomendada será el '+str(date))
     p1.add_run('\n CUARTO        :').bold = True
