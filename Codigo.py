@@ -129,7 +129,7 @@ for i in range(inicio, final):
 #Graficos
 print("Graficos")
 
-print("Consulta 1")
+
 # Hace la consulta, Funciona igual que SQL
 con_rol = pd.read_sql_query("SELECT Rol FROM Salarios", start)
 con_sld = pd.read_sql_query("SELECT Sueldo FROM Salarios", start)
