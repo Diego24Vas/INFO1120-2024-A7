@@ -10,7 +10,10 @@ db = "db_personas.db"
 start = fn.Conectar_db(db)
 personas = fn.Conectar_P(db)
 
-
+# Consulta cantidad de filas
+con_cant = start.execute("SELECT COUNT(*) as cantidad FROM personas")
+con_cant = con_cant.fetchone()
+con_cant = con_cant[0]
 
 # Consulta al usuario
 while True:
@@ -18,11 +21,17 @@ while True:
         inicio = int(input("Ingrese el primer numero de fila: "))
         final = int(input("Ingrese el ultimo numero de fila: "))
         
-        if inicio > final:
-            print("Error: El primer número de fila debe ser menor o igual al último.")
+        if inicio > final:  
+            print("El primer número debe ser menor o igual al último.")
+            continue
+        elif inicio > con_cant:
+            print("El primer rango esta fuera de limite")
+            continue
+        elif final > con_cant:
+            print("El segundo rango esta fuera de limite")
             continue
         break
-    except ValueError:
+    except (ValueError, IndexError, TypeError):
         print("Caracter ingresado no valido")
 
 
