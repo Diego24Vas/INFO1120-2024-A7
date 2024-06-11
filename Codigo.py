@@ -2,6 +2,7 @@ import sqlite3
 import pandas as pd
 import docx
 import Funciones as fn
+from Funciones import example_contract
 from word_gen import example_contract
 
 #Todas las secciones del codigo deberian funcionar por separado importando los repositorios de arriba
