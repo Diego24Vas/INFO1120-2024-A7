@@ -72,9 +72,9 @@ def singular_data_to_contract(df, employee_id):
         return    
     
 db = "db_personas.db"
-start = fn.Conectar_P(db) 
+startP = fn.Conectar_P(db) 
 employee_id = SumDat #Asigna Employee_Id como confirmacion de RUT
-singular_data_to_contract(start, employee_id)
+singular_data_to_contract(startP, employee_id)
 
 #Consulta 5
 print("consulta 5")
@@ -126,7 +126,6 @@ for i in range(inicio, final):
 
 #Graficos
 print("Graficos")
-
 
 # Hace la consulta, Funciona igual que SQL
 con_rol = pd.read_sql_query("SELECT Rol FROM Salarios", start)
