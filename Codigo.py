@@ -79,8 +79,7 @@ singular_data_to_contract(start, employee_id)
 #Consulta 5
 print("consulta 5")
 
-db = "db_personas.db"
-start = fn.Conectar_db(db)
+start = fn.Conectar_db("db_personas.db") #No se modifica el "start" anterior, solo se repite por comodidad
 personas = fn.Conectar_P(db)
 
 # Consulta cantidad de filas
@@ -117,8 +116,7 @@ def multiple_data_to_contract(registro):
         nationality = registro['nacionalidad']
         birth_date = registro['fecha_de_nacimiento']
         profession = registro['profesion']
-        salary = registro['Sueldo']
-        #Datos egresados, solo como comprobacio  
+        salary = registro['Sueldo'] 
         example_contract(date, rol, address, rut, full_name, nationality, birth_date, profession, str(salary))
 
 
